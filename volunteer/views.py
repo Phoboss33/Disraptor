@@ -8,6 +8,7 @@ from volunteer.forms import RespondentSearchForm
 def respondent_search_view(request):
     if request.method == 'POST':
         form = RespondentSearchForm(request.POST)
+
         if form.is_valid():
             first_name = form.cleaned_data.get('first_name')
             surname = form.cleaned_data.get('surname')
@@ -15,13 +16,21 @@ def respondent_search_view(request):
             birthdate = form.cleaned_data.get('birthdate')
             sex = form.cleaned_data.get('sex')
 
-            respondents = Respondent.objects.filter(
-                first_name__icontains=first_name,
-                surname__icontains=surname,
-                patronymic__icontains=patronymic,
-                birthdate=birthdate,
-                sex=sex
-            )
+            if birthdate:
+                respondents = Respondent.objects.filter(
+                    first_name__icontains=first_name,
+                    surname__icontains=surname,
+                    patronymic__icontains=patronymic,
+                    birthdate=birthdate,
+                    sex=sex
+                )
+            else:
+                respondents = Respondent.objects.filter(
+                    first_name__icontains=first_name,
+                    surname__icontains=surname,
+                    patronymic__icontains=patronymic,
+                    sex=sex
+                )
 
             return render(request, 'volunteer/respondent_search_results.html', {'respondents': respondents, 'form': form})
     else:
