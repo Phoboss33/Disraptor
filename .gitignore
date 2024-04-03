@@ -32,6 +32,7 @@ migrations/
 migration/
 .idea
 .idea/*
+media/
 
 # docker postgres dev
 docker/dev-db/postgres/pgdata
