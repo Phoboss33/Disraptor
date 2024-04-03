@@ -48,5 +48,8 @@ class SelectedObject(models.Model):
                f"{self.selected_object.title}"
 
 
+class Annotation(models.Model):
+    plan_photo = models.ImageField(blank=True)
+    text = models.TextField(max_length=500)
 
 
