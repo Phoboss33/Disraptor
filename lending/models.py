@@ -13,6 +13,7 @@ class Object(models.Model):
     def __str__(self):
         return f"{self.title} {self.price}\n{self.description}"
 
+
 class Respondent(models.Model):
     first_name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
@@ -22,7 +23,6 @@ class Respondent(models.Model):
 
     suggestions = models.TextField(max_length=500)
     created_date = models.DateTimeField(default=timezone.now)
-
 
     def __str__(self):
         return f"{self.surname} {self.first_name} {self.patronymic}"
@@ -46,7 +46,3 @@ class SelectedObject(models.Model):
     def __str__(self):
         return f"{self.respondent.surname} {self.respondent.first_name}\n" \
                f"{self.selected_object.title}"
-
-
-
-
