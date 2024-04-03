@@ -7,5 +7,6 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('users/', include('users.urls')),
     path('api/v0/', include('api_v0.urls')),
-    path('', HomeStub.as_view(), name='homepage')
+    path('lending', include('lending.urls')),
+    path('', HomeStub.as_view(), name='homepage'),
 ]
