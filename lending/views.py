@@ -8,6 +8,8 @@ def lending_view(request):
     if request.method == 'POST':
         responder_form = RespondentForm(request.POST)
 
+        print(responder_form)
+
         # TODO: Проверка JSON с данными по карте
 
         if responder_form.is_valid():
