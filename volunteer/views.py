@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
+from lending.forms import RespondentForm
 from lending.models import Respondent
 from volunteer.forms import RespondentSearchForm
 
@@ -15,6 +16,8 @@ def respondent_search_view(request):
             patronymic = form.cleaned_data.get('patronymic')
             birthdate = form.cleaned_data.get('birthdate')
             sex = form.cleaned_data.get('sex')
+
+            print(first_name, surname, patronymic, birthdate, sex)
 
             if birthdate:
                 respondents = Respondent.objects.filter(
@@ -39,5 +42,13 @@ def respondent_search_view(request):
     return render(request, 'volunteer/respondent_search.html', {'form': form})
 
 
-def respondent_edit_view(request):
-    return
+def respondent_edit_view(request, pk):
+    respondent = get_object_or_404(Respondent, pk=pk)
+    if request.method == "POST":
+        form = RespondentForm(request.POST, instance=respondent)
+        if form.is_valid():
+            respondent = form.save()
+            return redirect('respondent_detail', pk=respondent.pk)
+    else:
+        form = RespondentForm(instance=respondent)
+    return render(request, 'volunteer/respondent_edit.html', {'form': form})

@@ -25,7 +25,7 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('homepage')
+            return redirect('lending')
 
         context = {
             'title': 'Регистрация пользователя',

@@ -6,4 +6,7 @@ from django.db.models import CASCADE
 class User(AbstractUser):
 
     def __str__(self):
-        return self.username
+        if self.first_name and self.last_name:
+            return f"{self.first_name} {self.last_name} {self.username}"
+        else:
+            return f"{self.username}"

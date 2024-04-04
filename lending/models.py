@@ -8,7 +8,7 @@ class Object(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, blank=True)
-    number_of_votes = models.IntegerField()
+    number_of_votes = models.IntegerField(blank=True)
 
     def get_id(self):
         return str(self.id)
@@ -42,7 +42,7 @@ class ChangeLog(models.Model):
 
 
 class SelectedObject(models.Model):
-    coordinate = models.CharField(max_length=5)
+    coordinate = models.JSONField(null=True, blank=True)
     respondent = models.OneToOneField(Respondent, on_delete=models.CASCADE)
     selected_object = models.OneToOneField(Object, on_delete=models.CASCADE)
 
