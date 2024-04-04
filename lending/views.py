@@ -13,7 +13,7 @@ def lending_view(request):
         responder_form = RespondentForm(request.POST)
 
         if responder_form.is_valid():
-            responder = responder_form.save(commit=False)
+            responder= responder_form.save(commit=False)
             responder.created_date = timezone.now()
             responder.save()
 
@@ -25,12 +25,8 @@ def lending_view(request):
                 return HttpResponse("Форма заполнена неправильно", status=400)
 
             for objectId in selectedObjects:
-                # Создаем экземпляр SelectedObject для каждого выбранного объекта
-                selected_object = Object.objects.get(id=objectId)
-                selectedObject = SelectedObject.objects.create(
-                    respondent=responder, selected_object=selected_object, coordinate=None
-                )
-                selectedObject.save()
+                selectedObjects = SelectedObject(coordinate=None, object_json=int(objectId), respondent_json=responder.id)
+                selectedObjects.save()
 
             return HttpResponse("Успешно!", status=200)
         else:

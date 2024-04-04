@@ -40,9 +40,8 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                       </button>
-                    </div> <!-- Закрывающий тег для внутреннего carousel-slide -->
-                </div> <!-- Закрывающий тег для внешнего carousel-slide -->
-                <!-- End Bootstrap Carousel -->
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -77,7 +76,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="star">Голосоуй за проекты</h1>
+                <h1 class="star">Голосуй за проекты</h1>
             </div>
         </div>
         <div class="row">
@@ -88,9 +87,11 @@
                         <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.title }}">
                         <div class="card-body">
                             <div class="form-check">
+                                <input class="price" type="hidden" value="{{ object.price }}">
                                 <input class="form-check-input" type="checkbox" value="" id="{{ object.id }}">
                                 <label class="form-check-label" for="checkbox{{ object.id }}">
                                     {{ object.title }}
+                                    {{ object.price }}
                                 </label>
                             </div>
                         </div>
@@ -114,7 +115,6 @@
                 <img src="{% static 'img/map.jpg' %}" alt="Map">
             </div>
         </div>
-    </div>
     </div>
 </section>
 

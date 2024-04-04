@@ -1,27 +1,48 @@
-var selectedObjects = [];
+let selectedObjects = [];
+let price_sum = 0
 
 document.getElementById('respondentForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Получаем скрытое поле
-    var selectedObjectsField = document.getElementById('selectedObjectsField');
+    let selectedObjectsField = document.getElementById('selectedObjectsField');
 
-    // Устанавливаем его значение в selectedObjects
     selectedObjectsField.value = JSON.stringify(selectedObjects);
 
-    // Отправляем форму
     this.submit();
+    selectedObjects = [];
+    price_sum = 0
 });
 
 document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            selectedObjects.push(this.id);
+        } else {
+            let index = selectedObjects.indexOf(this.id);
+            if (index !== -1) {
+                selectedObjects.splice(index, 1);
+            }
+        }
 
-        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+        // Объявляем переменную для суммирования цен
+        let sum_price = 0;
+
+        // Перебираем только отмеченные чекбоксы и суммируем цены
+        document.querySelectorAll('div.form-check').forEach(function(div) {
+            let checkbox = div.querySelector('input[type="checkbox"]');
+            let priceInput = div.querySelector('input.price');
+
             if (checkbox.checked) {
-                selectedObjects.push(checkbox.id);
+                let price = parseFloat(priceInput.value);
+                if (!isNaN(price)) {
+                    sum_price += price;
+                    console.log(priceInput.value);
+                }
             }
         });
 
         console.log(selectedObjects);
+        console.log(sum_price);
     });
 });
+

@@ -7,8 +7,8 @@ class Object(models.Model):
     image = models.ImageField()
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True)
-    price = models.DecimalField(max_digits=12, decimal_places=2, blank=True)
-    number_of_votes = models.IntegerField(blank=True)
+    price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, default=0)
+    number_of_votes = models.IntegerField(blank=True, default=0)
 
     def get_id(self):
         return str(self.id)
@@ -24,7 +24,7 @@ class Respondent(models.Model):
     birthdate = models.DateField()
     sex = models.CharField()
 
-    suggestions = models.TextField(max_length=500)
+    suggestions = models.TextField(max_length=500, blank=True, default="")
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -37,18 +37,14 @@ class ChangeLog(models.Model):
     reason_for_change = models.TextField(max_length=200)
     create_date = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
-        return f"Респондент: {self.respondent.surname} {self.respondent.first_name} {self.respondent.patronymic}"
-
 
 class SelectedObject(models.Model):
     coordinate = models.JSONField(null=True, blank=True)
-    respondent = models.OneToOneField(Respondent, on_delete=models.CASCADE)
-    selected_object = models.OneToOneField(Object, on_delete=models.CASCADE)
+    respondent_json = models.JSONField(null=True, blank=True)
+    object_json = models.JSONField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.respondent.surname} {self.respondent.first_name}\n" \
-               f"{self.selected_object.title}"
+        return f"SelectedObject {self.id}"
 
 class Annotation(models.Model):
     photo = models.ImageField()
