@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Object, Respondent, Annotation
+from .models import Object, Annotation
 from .forms import RespondentForm
 
 def lending_view(request):
@@ -12,7 +12,6 @@ def lending_view(request):
 
         if responder_form.is_valid():
             responder = responder_form.save(commit=False)
-            responder.author = request.user
             responder.created_date = timezone.now()
             responder.save()
             return HttpResponse("Успешно!", status=200)
