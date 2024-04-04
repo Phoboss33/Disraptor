@@ -13,8 +13,21 @@ class Object(models.Model):
     def get_id(self):
         return str(self.id)
 
+    def get_price(self):
+        if self.price == 0:
+            return "Цена: Реализуется за счёт заказчика"
+        elif self.price >= 1000000:
+            formatted_price = round(self.price / 1000000, 3)
+            if formatted_price % 1 == 0:
+                return f"Цена: {int(formatted_price)} млн"
+            else:
+                return f"Цена: {formatted_price:.3f} млн"
+        else:
+            formatted_price = round(self.price / 1000, 0)
+            return f"Цена: {formatted_price:.0f} тыс."
+
     def __str__(self):
-        return f"{self.title} {self.price}\n{self.description}"
+        return f"{self.title} \n{self.description}"
 
 
 class Respondent(models.Model):
@@ -54,4 +67,9 @@ class Annotation(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+class PhotoCarousel(models.Model):
+    photo = models.ImageField()
+    title = models.CharField(blank=True)
 
