@@ -42,14 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
             let text = document.getElementById("text"+ selectedElement.id.match(/\d+/)[0]);
             //console.log(text.id);
             //console.log(selectedElement.id.match(/\d+/)[0]);
-            //selectedElement.style.left = (e.screenX > field.right ? field.right - SizeSquare : e.screenX < diffX ? diffX - SizeSquare : e.screenX - diffX) + "px";
-            selectedElement.style.left = (e.clientX - diffX + document.documentElement.scrollLeft) + "px";
-            //selectedElement.style.top = (e.screenY > field.bottom ? field.bottom - SizeSquare : e.screenY < diffY ? diffY - SizeSquare : e.screenY - diffY) + "px";
-            selectedElement.style.top = (e.clientY - diffY + document.documentElement.scrollTop) + "px";
-            console.log(document.documentElement.scrollTop);
-            if (e.clientY - diffY >= field.top && e.clientX - diffX >= field.left &&
-            selectedElement.getBoundingClientRect().bottom <= field.bottom &&
-            selectedElement.getBoundingClientRect().right <= field.right) {
+            //selectedElement.style.left = (e.clientX > field.right ? field.right - SizeSquare : e.clientX < diffX ? diffX - SizeSquare : e.clientX - diffX) + "px";
+            selectedElement.style.left = (e.clientX - diffX + window.scrollX) + "px";
+            selectedElement.style.top = (e.clientY - window.scrollY > field.bottom ? field.bottom - SizeSquare : e.clientY - window.scrollY < diffY ? diffY - SizeSquare : e.clientY - diffY  + window.scrollY) + "px";
+            //selectedElement.style.top = (e.clientY - diffY + window.scrollY) + "px";
+            //console.log(window. pageYOffset);
+            //console.log(window. scrollY);
+            console.log(e.clientY - window.scrollY);
+            console.log(field.bottom);
+            if (e.clientY - diffY + window.scrollY >= field.top && e.clientX - diffX + window.scrollX >= field.left &&
+            selectedElement.getBoundingClientRect().bottom - window.scrollY <= field.bottom &&
+            selectedElement.getBoundingClientRect().right - window.scrollX <= field.right) {
                 text.value = `${e.clientX - diffX - rateX}, ${e.clientY - diffY - rateY}`;
             } else {
                 text.value = "Undefined";
