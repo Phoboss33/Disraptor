@@ -24,7 +24,7 @@ class Respondent(models.Model):
     birthdate = models.DateField()
     sex = models.CharField()
 
-    suggestions = models.TextField(max_length=500)
+    suggestions = models.TextField(max_length=500, name='')
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

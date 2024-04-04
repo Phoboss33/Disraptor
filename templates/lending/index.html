@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 {% load static %}
 
 {% block content %}
@@ -143,15 +144,54 @@
 
 
 
-<form method="post" class="post-form" id="respondentForm">{% csrf_token %}
+{#<form method="post" class="post-form" id="respondentForm">{% csrf_token %}#}
+{#    <section class="full-screen-container-2">#}
+{#        <div class="container">#}
+{#            {{ form.as_p }}#}
+{#            {%  bootstrap_form form %}#}
+{#            <input type="hidden" name="selectedObjects" id="selectedObjectsField">#}
+{#            <button type="submit" class="btn btn-primary">Отправить</button>#}
+{#        </div>#}
+{#    </section>#}
+{#</form>#}
+<form method="post" class="post-form" id="respondentForm">
+    {% csrf_token %}
+    {% if form_submitted %}
+            <div class="container">
+                Форма успешно отправлена!
+            </div>
+            
+        {% endif %}
     <section class="full-screen-container-2">
+        
         <div class="container">
-            {{ form.as_p }}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            {% for field in form %}
+                <div class="form-group">
+{#                    <label for="{{ field.id_for_label }}" class="custom-label">{{ field.label }}</label>#}
+                    {{ field }}
+                    {% if field.errors %}
+                        <ul class="errors">
+                            {% for error in field.errors %}
+                                <li style="color: red">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
             <input type="hidden" name="selectedObjects" id="selectedObjectsField">
             <button type="submit" class="btn btn-primary">Отправить</button>
         </div>
     </section>
 </form>
+
+
+
+
 
 <!-- Bootstrap Bundle JS (includes Popper.js for Dropdown & Collapse plugin) -->
 <script src="{% static 'js/bootstrap.js' %}"></script>
