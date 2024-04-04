@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-
+from .models import Object
 from .forms import RespondentForm
 
 def send_data(request):
@@ -21,3 +21,6 @@ def send_data(request):
 
     # TODO: Редирект на основную страницу
 
+def lending_view(request):
+    objects = Object.objects.all()
+    return render(request, 'lending/lending.html', {'objects': objects})
