@@ -4,11 +4,14 @@ from django.utils import timezone
 
 
 class Object(models.Model):
-    image = models.ImageField(blank=True)
+    image = models.ImageField()
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, blank=True)
     number_of_votes = models.IntegerField()
+
+    def get_id(self):
+        return str(self.id)
 
     def __str__(self):
         return f"{self.title} {self.price}\n{self.description}"
@@ -48,6 +51,11 @@ class SelectedObject(models.Model):
                f"{self.selected_object.title}"
 
 class Annotation(models.Model):
-    plan_photo = models.ImageField(blank=True)
+    photo = models.ImageField()
+    modal_photo = models.ImageField()
+    title = models.CharField(max_length=100)
     text = models.TextField(max_length=500)
+
+    def __str__(self):
+        return str(self.id)
 

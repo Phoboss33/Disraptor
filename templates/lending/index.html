@@ -63,7 +63,8 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                       </button>
-                    </div>
+                    </div> <!-- Закрывающий тег для внутреннего carousel-slide -->
+                </div> <!-- Закрывающий тег для внешнего carousel-slide -->
                 <!-- End Bootstrap Carousel -->
             </div>
         </div>
@@ -84,44 +85,150 @@
             </div>
         </div>
         <div class="row">
-            <!-- Image 1 -->
+            {% for annotation in annotations %}
             <div class="col-6 col-sm-6 mb-4">
-                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal1">
-                    <img id="image1" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 1">
+                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal{{ annotation.id }}">
+                    <img id="image{{ annotation.id }}" src="{{ annotation.photo.url }}" class="img-fluid" alt="Отзывчивая Картинка {{ annotation.id }}">
                 </div>
             </div>
-            <!-- Image 2 -->
-            <div class="col-6 col-sm-6 mb-4">
-                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal2">
-                    <img id="image2" src="{% static 'img/bg-2.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 2">
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="full-screen-container-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="star">Голосоуй за проекты</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Image 3 -->
-            <div class="col-6 col-sm-6 mb-4">
-                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal3">
-                    <img id="image3" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 3">
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox2">
+                            <label class="form-check-label" for="checkbox2">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Image 4 -->
-            <div class="col-6 col-sm-6 mb-4">
-                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal4">
-                    <img id="image4" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 4">
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox3">
+                            <label class="form-check-label" for="checkbox3">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox4">
+                            <label class="form-check-label" for="checkbox4">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox5">
+                            <label class="form-check-label" for="checkbox5">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox6">
+                            <label class="form-check-label" for="checkbox6">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox7">
+                            <label class="form-check-label" for="checkbox7">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/bg-1.jpg' %}" class="card-img-top" alt="Картинка 1">
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox8">
+                            <label class="form-check-label" for="checkbox8">
+                                Чекбокс 1
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Modal 1 -->
-<div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel1" aria-hidden="true">
+<!-- Modal -->
+{% for annotation in annotations %}
+<div class="modal fade" id="imageModal{{ annotation.id }}" tabindex="-1" aria-labelledby="imageModalLabel{{ annotation.id }}" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel1">Отзывчивая Картинка 1</h5>
+                <h5 class="modal-title" id="imageModalLabel{{ annotation.id }}">{{ annotation.title }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 1">
+                <img src="{{ annotation.modal_photo.url }}" class="img-fluid" alt="{{ annotation.title }} {{ annotation.id }}">
+            </div>
+            <div>
+                <p>Текст {{ annotation.text }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -129,60 +236,15 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
-<!-- Modal 2 -->
-<div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel2">Отзывчивая Картинка 2</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="{% static 'img/bg-2.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 2">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Modal 3 -->
-<div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel3">Отзывчивая Картинка 3</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 3">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
+<section class="full-screen-container-2">
+    <div class="container">
+        {{ form.as_p }}
     </div>
-</div>
+</section>
 
-<!-- Modal 4 -->
-<div class="modal fade" id="imageModal4" tabindex="-1" aria-labelledby="imageModalLabel4" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel4">Отзывчивая Картинка 4</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 4">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Bootstrap Bundle JS (includes Popper.js for Dropdown & Collapse plugin) -->
 <script src="{% static 'js/bootstrap.js' %}"></script>
 
