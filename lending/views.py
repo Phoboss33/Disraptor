@@ -25,6 +25,9 @@ def lending_view(request):
                 return HttpResponse("Форма заполнена неправильно", status=400)
 
             for objectId in selectedObjects:
+                object_from_base = Object.objects.get(id=objectId)
+                object_from_base.number_of_votes += 1
+                object_from_base.save()
                 selectedObjects = SelectedObject(coordinate=None, object_json=int(objectId), respondent_json=responder.id)
                 selectedObjects.save()
 
