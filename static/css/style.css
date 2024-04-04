@@ -25,6 +25,11 @@ html {
     width: 100%;
 }
 
+.brand-logo {
+    height: 2.3rem;
+    margin-right: 10px;
+}
+
 .navbar-brand, .nav-link {
     color: #fff;
 }
@@ -43,7 +48,7 @@ html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('../img/bg_1.jpg');
+    background-image: url('../img/back_one.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,7 +60,32 @@ html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('../img/bg_2.jpg');
+    background-image: url('../img/back_two.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.full-screen-container-3 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../img/bg_3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.full-screen-container-4 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../img/bg_homeStub.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -404,3 +434,4 @@ html {
 .card-img-top {
     margin-top: -2px;
 }
+
