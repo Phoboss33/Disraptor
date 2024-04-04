@@ -1,0 +1,357 @@
+/* style.css */
+
+html {
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: 'Rostov'; /* Название шрифта для использования в CSS */
+  src: url('../fonts/Rostov.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Frank'; /* Название шрифта для использования в CSS */
+  src: url('../fonts/franklingothic_demi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar-custom {
+    background-color: rgba(31, 36, 33, 0.9); /* 80% opacity */
+    z-index: 1000; /* Ensure it's above other content */
+    position: fixed; /* Stay at the top on scroll */
+    width: 100%; /* Full width */
+}
+
+.navbar-brand, .nav-link {
+    color: #fff;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.full-screen-container {
+    min-height: 100vh; /* Subtract the navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../img/bg-1.jpg'); /* Path to the image file */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.full-screen-container-2 {
+    min-height: 100vh; /* Subtract the navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../img/bg-2.jpg'); /* Path to the image file */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.carousel-item {
+  height: 50vh; /* Задает высоту слайду */
+  background: black; /* Фон для слайдов без изображений или пока изображения загружаются */
+}
+
+.carousel-item img {
+  height: 50vh; /* Высота изображения будет такой же как у слайда */
+  object-fit: cover; /* Убедится, что изображения полностью покроют слайд */
+}
+
+/* Стили для индикаторов слайдов и элементов управления. Вы можете переопределить их при необходимости. */
+.carousel-indicators button {
+  background-color: #ffffff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+.row {
+    width: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1; /* Позволяет слайдеру занимать все доступное пространство */
+}
+
+.my-auto {
+    margin: auto 0; /* Центрирование по вертикали внутри своего контейнера */
+}
+
+.container {
+    height: 100%; /* Задаем 100% высоты для контейнера */
+    display: flex; /* Это позволит использовать Flexbox */
+    flex-direction: column;
+}
+
+.top-content {
+    /* Adjust padding for top content */
+    padding: 10px 0;
+}
+
+.bottom-content {
+    /* Adjust padding for bottom content */
+    padding: 10px 0;
+}
+
+#photoCarousel {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Горизонтальное смещение, вертикальное смещение, радиус размытия, цвет тени */
+
+}
+
+.slider-container {
+    /* Extra styles for your slider may go here, depends on the slider implementation */
+    /* Placeholder styles for example */
+    flex-grow: 1; /* Let the slider grow to fill the space */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center the content vertically */
+    justify-content: center; /* Center the content horizontally */
+}
+
+.custom-carousel {
+    max-width: 75%; /* Устанавливаем максимальную ширину слайдера как процент от ширины родителя */
+    margin: auto; /* Центрировать слайдер на странице */
+
+    border-radius: .5rem; /* Задаем скругление углов для рамки, значение можно менять по желанию */
+    background-color: #fff; /* Добавляем фон, чтобы изображения смотрелись лучше на рамке */
+}
+
+/* Обновим стили флекс-контейнера чтобы изображения центрировались независимо от их размера */
+.middle-content {
+    display: flex; /* Продолжаем использовать Flexbox */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Custom carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px; /* Set the width of the control elements */
+  height: 50px; /* Set the height of the control elements */
+  margin: auto 0; /* Vertically center the controls */
+  background-color: #fff; /* Background color for the controls */
+  border-radius: 50%; /* Makes the controls circular */
+  display: flex; /* Flex display to center icons within the controls */
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  position: absolute; /* Absolute positioning with respect to the carousel */
+  transition: transform 0.1s ease, background-color 0.4s; /* Transition for transform and bg color */
+  z-index: 100; /* Ensure the controls are above the images */
+  color: #fff; /* Color of the icons */
+}
+
+.carousel-control-prev {
+  left: 25px; /* Spacing from the left side for the previous button */
+}
+
+.carousel-control-next {
+  right: 25px; /* Spacing from the right side for the next button */
+}
+
+/* Icons within the controls for better visibility */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 50%; /* Resize the icons */
+  background-repeat: no-repeat; /* Prevent the icons from repeating */
+  display: inline-block; /* Use inline-block for proper alignment */
+}
+
+/* Hover and focus effects for the controls */
+.carousel-control-prev:hover,
+.carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  background-color: #333; /* Darken the background on hover/focus */
+  outline: none; /* Remove the outline on focus */
+}
+
+@keyframes clickAnimation {
+  0%, 100% {
+    background-color: #222; /* Starting and ending color - white */
+  }
+  50% {
+    background-color: #333; /* Background color during click - dark */
+  }
+}
+
+.carousel-control-prev:active,
+.carousel-control-next:active {
+  animation: clickAnimation 0.4s ease; /* Apply the click animation */
+  transform: scale(0.9); /* Scale down to simulate click */
+}
+
+.carousel-control-prev:hover:not(:active),
+.carousel-control-prev:focus:not(:active),
+.carousel-control-next:hover:not(:active),
+.carousel-control-next:focus:not(:active) {
+  background-color: #333; /* Darken the background on hover/focus */
+}
+
+/* Reset background color when not active */
+.carousel-control-prev:not(:hover):not(:active),
+.carousel-control-next:not(:hover):not(:active) {
+  background-color: #fff; /* Reset to original background color */
+}
+
+
+.star {
+  font-family: 'Rostov', sans-serif;
+  color: #dce1de;
+  text-shadow: 5px 5px #1f2421;
+  margin-bottom: 2.2rem;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 575.98px) { 
+  .star {
+    font-size: 2rem; /* Примерный размер для маленьких устройств */
+  }
+}
+
+/* Для планшетов */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .star {
+    font-size: 3rem; /* Примерный размер для средних устройств */
+  }
+}
+
+/* Для маленьких десктопов */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .star {
+    font-size: 4rem; /* Примерный размер для больших устройств */
+  }
+}
+
+/* Для десктопов */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+  .star {
+    font-size: 5rem; /* Примерный размер для десктопов */
+  }
+}
+
+@media (min-width: 1200px) { 
+  .star {
+    font-size: 7.5rem; /* Примерный размер для очень больших устройств */
+  }
+}
+
+
+/* Add responsive padding or margins as needed */
+@media (max-width: 768px) {
+    .full-screen-container {
+        padding: 20px;
+    }
+}
+
+
+.star-h3 {
+    font-family: "Rostov";
+    color: #dce1de;
+    text-shadow: 2px 2px #1f2421;
+    font-size: 1.75rem; /* Начальный размер заголовка */
+    margin-top: 4rem;
+    margin-bottom: -0.1rem;
+}
+
+.star-p {
+    font-family: "Frank";
+    color: #555;
+    font-size: 1rem; /* Начальный размер параграфа */
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность для .star-h3 и .star-p на разных экранах */
+@media (max-width: 575.98px) {
+  .star-h3 {
+    font-size: 1.25rem; /* Меньший размер для мобильных устройств */
+  }
+  .star-p {
+    font-size: 0.875rem; /* Меньший размер для мобильных устройств */
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .star-h3 {
+    font-size: 1.5rem; /* Промежуточный размер для планшетов */
+  }
+  .star-p {
+    font-size: 0.925rem; /* Промежуточный размер для планшетов */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .star-h3 {
+    font-size: 1.75rem; /* Стандартный размер для маленьких десктопов */
+  }
+  .star-p {
+    font-size: 1rem; /* Стандартный размер для маленьких десктопов */
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .star-h3 {
+    font-size: 2rem; /* Большой размер для десктопов */
+  }
+  .star-p {
+    font-size: 1.125rem; /* Большой размер для десктопов */
+  }
+}
+
+@media (min-width: 1200px) {
+  .star-h3 {
+    font-size: 2.25rem; /* Ещё больший размер для больших десктопов */
+  }
+  .star-p {
+    font-size: 1.25rem; /* Ещё больший размер для больших десктопов */
+  }
+}
+
+/* Add a wrapper around the images to contain the hover effect */
+.image-wrapper {
+    position: relative;
+    display: inline-block; /* Ensure the wrapper takes up the full width of the image */
+    overflow: hidden; /* Hide the overflow of the image when it's scaled up */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animate the scaling of the container and the shadow */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Default shadow */
+}
+
+/* On hover, scale the image and the container and remove the shadow */
+.image-wrapper:hover {
+    transform: scale(1.01); /* Scale the container up */
+    box-shadow: none; /* Remove the shadow on hover */
+}
+
+.image-wrapper img {
+    display: block; /* Ensure the image takes up the full width of the container */
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* Animate the scaling of the image */
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05); /* Scale the image up */
+}
+
+/* Change the cursor to a pointer on hover of the image wrapper */
+.image-wrapper:hover {
+    cursor: pointer;
+}
+
+/* Apply the wrapper class to your images */
+#image1, #image2, #image3, #image4 {
+    /* Your existing styles for the images */
+}

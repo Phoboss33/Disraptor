@@ -37,3 +37,7 @@ def respondent_search_view(request):
         form = RespondentSearchForm()
 
     return render(request, 'volunteer/respondent_search.html', {'form': form})
+
+
+def respondent_edit_view(request):
+    return

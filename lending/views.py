@@ -22,5 +22,5 @@ def send_data(request):
     # TODO: Редирект на основную страницу
 
 def lending_view(request):
-    objects = Object.objects.all()
-    return render(request, 'lending/lending.html', {'objects': objects})
+
+    return render(request, 'lending/index.html')

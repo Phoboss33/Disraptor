@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BrandName</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">About</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="full-screen-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="star">Звездные увалы</h1>
+            </div>
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col-12 my-auto">
+                <!-- Bootstrap Carousel with Custom Styles -->
+                <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-bs-ride="carousel">
+                    <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="Slide 1">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="{% static 'img/bg-2.jpg' %}" class="d-block w-100" alt="Slide 2">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="{% static 'img/bg-1.jpg' %}" class="d-block w-100" alt="Slide 3">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+                <!-- End Bootstrap Carousel -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="star-h3">Информация</h3>
+                <p class="star-p">Редактируема инфа</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="full-screen-container-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="star">Наши цели</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Image 1 -->
+            <div class="col-6 col-sm-6 mb-4">
+                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                    <img id="image1" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 1">
+                </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="col-6 col-sm-6 mb-4">
+                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal2">
+                    <img id="image2" src="{% static 'img/bg-2.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 2">
+                </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="col-6 col-sm-6 mb-4">
+                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal3">
+                    <img id="image3" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 3">
+                </div>
+            </div>
+            <!-- Image 4 -->
+            <div class="col-6 col-sm-6 mb-4">
+                <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal4">
+                    <img id="image4" src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 4">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel1">Отзывчивая Картинка 1</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 1">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel2">Отзывчивая Картинка 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'img/bg-2.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 2">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel3">Отзывчивая Картинка 3</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 3">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4 -->
+<div class="modal fade" id="imageModal4" tabindex="-1" aria-labelledby="imageModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel4">Отзывчивая Картинка 4</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'img/bg-1.jpg' %}" class="img-fluid" alt="Отзывчивая Картинка 4">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap Bundle JS (includes Popper.js for Dropdown & Collapse plugin) -->
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>
