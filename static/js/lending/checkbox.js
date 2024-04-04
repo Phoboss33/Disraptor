@@ -1,22 +1,19 @@
 document.getElementById('respondentForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+    event.preventDefault();
 
     this.submit();
 });
 
 document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
-        var selectedObjects = []; // Список выбранных объектов
+        var selectedObjects = [];
 
-        // Перебираем все чекбоксы
         document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
             if (checkbox.checked) {
-                // Если чекбокс выбран, добавляем его ID в список выбранных объектов
                 selectedObjects.push(checkbox.id);
             }
         });
 
-        // Выводим список выбранных объектов в консоль
         console.log(selectedObjects);
     });
 });
