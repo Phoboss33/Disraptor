@@ -10,6 +10,9 @@ class Object(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=2, blank=True)
     number_of_votes = models.IntegerField()
 
+    def get_id(self):
+        return str(self.id)
+
     def __str__(self):
         return f"{self.title} {self.price}\n{self.description}"
 
