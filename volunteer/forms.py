@@ -1,5 +1,6 @@
 from django import forms
 from lending.models import Respondent
+from users.models.users import User
 
 
 class RespondentSearchForm(forms.Form):
@@ -32,3 +33,37 @@ class RespondentSearchForm(forms.Form):
             raise forms.ValidationError("Укажите хотя бы один критерий поиска.")
 
         return cleaned_data
+
+
+class UserProfileEditForm(forms.ModelForm):
+    last_name = forms.CharField(
+        label="Фамилия",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите вашу фамилию'
+        }),
+    )
+
+    first_name = forms.CharField(
+        label="Имя",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите ваше имя'
+        }),
+    )
+
+    email = forms.EmailField(
+        label="Email",
+        max_length=254,
+        widget=forms.EmailInput(attrs={
+            'autocomplete': 'email',
+            'class': 'form-control',
+            'placeholder': 'Введите ваш email'
+        }),
+    )
+
+    class Meta:
+        model = User
+        fields = (
+            'username', 'last_name', 'first_name', 'email',
+        )

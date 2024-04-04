@@ -11,12 +11,11 @@
             </div>
             <div class="card-body">
               <p class="text-center">Добро пожаловать, {{ user.username }}!</p>
-                <p>Фамилия: {{ user.last_name }}</p>
-                <p>Имя: {{ user.first_name }}</p>
-                <p>Адрес почты: {{ user.email }}</p>
-                <p>Номер мобильного телефона: {{ user.phone_number }}</p>
+                {{ user.last_name }}
+                {{ user.first_name }}
+                {{ user.email }}
               <form method="post" class="mt-4">
-                {% csrf_token %}
+                {% csrf_token %}{% bootstrap_form form %}
                 <button type="submit" class="btn btn-primary btn-block mt-4">Сохранить</button>
               </form>
                 <br><a href="{% url 'password_change' %}">Изменить пароль</a>

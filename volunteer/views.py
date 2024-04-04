@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from lending.forms import RespondentForm
 from lending.models import Respondent
 from users.models import users
-from volunteer.forms import RespondentSearchForm
+from volunteer.forms import RespondentSearchForm, UserProfileEditForm
 
 
 def respondent_search_view(request):
@@ -55,4 +55,4 @@ def respondent_edit_view(request, pk):
     return render(request, 'volunteer/respondent_edit.html', {'form': form})
 
 def volunteer_cabinet(request):
-    return render(request, 'volunteer/volunteer.html', {'user': users})
+    return render(request, 'volunteer/volunteer.html', {'form': UserProfileEditForm, 'user': request.user})
