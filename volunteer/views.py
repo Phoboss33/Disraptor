@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 from lending.forms import RespondentForm
 from lending.models import Respondent
+from users.models import users
 from volunteer.forms import RespondentSearchForm
 
 
@@ -52,3 +53,6 @@ def respondent_edit_view(request, pk):
     else:
         form = RespondentForm(instance=respondent)
     return render(request, 'volunteer/respondent_edit.html', {'form': form})
+
+def volunteer_cabinet(request):
+    return render(request, 'volunteer/volunteer.html', {'user': users})

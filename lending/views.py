@@ -21,9 +21,10 @@ def lending_view(request):
             selectedObjects = request.POST.get('selectedObjects')
             selectedObjects = json.loads(selectedObjects)  # Преобразование строки JSON в список Python
 
-            print(selectedObjects)
+            if not selectedObjects:
+                return HttpResponse("Форма заполнена неправильно", status=400)
+
             for objectId in selectedObjects:
-                print(objectId)
                 # Создаем экземпляр SelectedObject для каждого выбранного объекта
                 selected_object = Object.objects.get(id=objectId)
                 selectedObject = SelectedObject.objects.create(
