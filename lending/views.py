@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Object
+from .models import Object, Respondent
 from .forms import RespondentForm
 
 def send_data(request):
@@ -24,3 +24,7 @@ def send_data(request):
 def lending_view(request):
 
     return render(request, 'lending/index.html')
+
+def valera_view(request):
+    objects = Object.objects.all()
+    return render(request, 'lending/lending.html', {'objects': objects})
