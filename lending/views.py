@@ -18,18 +18,18 @@ def lending_view(request):
             responder.save()
 
             # Получаем данные из JavaScript
-            selectedObjects = request.POST.get('selectedObjects')
-            selectedObjects = json.loads(selectedObjects)  # Преобразование строки JSON в список Python
+            selected_objects = request.POST.get('selectedObjects')
+            selected_objects = json.loads(selected_objects)  # Преобразование строки JSON в список Python
 
-            if not selectedObjects:
+            if not selected_objects:
                 return HttpResponse("Форма заполнена неправильно", status=400)
 
-            for objectId in selectedObjects:
+            for objectId in selected_objects:
                 object_from_base = Object.objects.get(id=objectId)
                 object_from_base.number_of_votes += 1
                 object_from_base.save()
-                selectedObjects = SelectedObject(coordinate=None, object_json=int(objectId), respondent_json=responder.id)
-                selectedObjects.save()
+                selected_objects = SelectedObject(coordinate=None, object=object_from_base, respondent=responder)
+                selected_objects.save()
 
             return HttpResponse("Успешно!", status=200)
         else:
