@@ -22,5 +22,5 @@ def send_data(request):
     # TODO: Редирект на основную страницу
 
 def lending_view(request):
-
-    return render(request, 'lending/index.html')
+    form = RespondentForm()
+    return render(request, 'lending/index.html', {'form': form})
