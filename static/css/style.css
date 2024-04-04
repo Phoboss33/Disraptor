@@ -1,8 +1,5 @@
 /* style.css */
 
-html {
-  scroll-behavior: smooth;
-}
 @font-face {
   font-family: 'Rostov'; /* Название шрифта для использования в CSS */
   src: url('../fonts/Rostov.ttf') format('truetype');

@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    width : 1000px;
+    height: 175px;
+    border: 3px solid; 
+    //margin-bottom: 10px;
+}
+.square {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    cursor: move;
+}
+#square1 {
+    background-image: url('img/Aleksey.jpg');
+}
+#square2 {
+    background-image: url('img/Lev.jpg');
+}
+#square3 {
+    background-image: url('img/Valera.jpg');
+}
+#field {
+    width: 1000px;
+    height: 500px;
+    border: solid;
+}

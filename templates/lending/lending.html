@@ -1,23 +1,29 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<style>
-    img {
-        width: 200px;
-        height: 200px;
-    }
-
-    div.img {
-        display: inline flex;
-    }
-</style>
+{% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/map/style.css' %}">
+        <script src="{% static 'js/map/script.js' %}"></script>
+        <title>Тест</title>
+    </head>
+<body>
     <h1>Map form</h1>
-    {% for object in objects %}
-        <div class="img">
-            <img src="{{ object.image.url }}" alt="{{ object.title }}">
+
+    <div>
+        <div class="container">
+            {% for object in objects %}
+                <div class="square" id="square{{ forloop.counter }}"></div>
+                <!--<div class="square" id="square{{ forloop.counter }}"><img src="{{ object.image.url }}" alt="{{ object.title }}"></div>-->
+            {% endfor %}
         </div>
-    {% endfor %}
-    <form method="POST" class="post-form">{% csrf_token %}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-{% endblock %}
+        <div id="field"></div>
+        <form method="POST" class="post-form">{% csrf_token %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+        <label for="text1">Координаты Лёхи:</label>
+        <textarea id="text1">Undefined</textarea>
+        <label for="text2">Координаты Льва:</label>
+        <textarea id="text2">Undefined</textarea>
+        <label for="text3">Координаты Валеры:</label>
+        <textarea id="text3">Undefined</textarea>
+
+    <div>
+</body>
