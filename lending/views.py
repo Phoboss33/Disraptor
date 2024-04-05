@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views import View
-from .models import Object, Annotation, SelectedObject, PhotoCarousel
+from .models import Object, Annotation, SelectedObject, PhotoCarousel, TextMainInfo
 from .forms import RespondentForm
 
 from django.http import JsonResponse
@@ -40,8 +40,14 @@ def lending_view(request):
         objects = Object.objects.all()
         annotations = Annotation.objects.all()
         carousel_items = PhotoCarousel.objects.all()
+        text_main_info = TextMainInfo.objects.all()
+        try:
+            text_main_info = text_main_info[0]
+        except Exception as e:
+            text_main_info.title = "Информация"
+            text_main_info.text = "Информация о нас"
     return render(request, 'lending/index.html', {'form': form, 'objects': objects, 'annotations': annotations,
-                                                  'carousel_items': carousel_items})
+                                                  'carousel_items': carousel_items, 'text_main_info': text_main_info})
 
 class LendingView(View):
     template_name = "lending/index.html"

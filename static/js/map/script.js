@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("move");
         if (selectedElement) {
             selectedElement.style.position = "absolute";
-            let text = document.getElementById("text"+ selectedElement.id.match(/\d+/)[0]);
+            // let text = document.getElementById("text"+ selectedElement.id.match(/\d+/)[0]);
             selectedElement.style.left = (e.clientX - diffX + window.scrollX) + "px";
             selectedElement.style.top = (e.clientY - diffY + window.scrollY) + "px";
             if (e.clientY - diffY + window.scrollY >= field.top && e.clientX - diffX + window.scrollX >= field.left &&
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 selectedElement.getBoundingClientRect().right - window.scrollX <= field.right) {
                 let resX = selectedElement.getBoundingClientRect().left - field.left;
                 let resY = selectedElement.offsetTop - field.top;
-                text.value = `${Math.floor(resX)}, ${Math.abs(Math.floor(resY))}`;
+                // text.value = `${Math.floor(resX)}, ${Math.abs(Math.floor(resY))}`;
             } else {
                 console.log("Cancel");
                 window.removeEventListener("mousemove", mouseMove, false);
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 let resX = selectedElement.getBoundingClientRect().left - field.left;
                 let resY = selectedElement.offsetTop - field.top;
-                text.value = `${Math.floor(resX)}, ${Math.abs(Math.floor(resY))}`;
+                // text.value = `${Math.floor(resX)}, ${Math.abs(Math.floor(resY))}`;
                 selectedElement = null;
             }
         }

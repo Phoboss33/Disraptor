@@ -43,8 +43,8 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h3 class="star-h3">Информация</h3>
-                <p class="star-p">Редактируема инфа</p>
+                <h3 class="star-h3">{{ text_main_info.title }}</h3>
+                <p class="star-p">{{ text_main_info.text }}</p>
             </div>
         </div>
     </div>
@@ -105,11 +105,12 @@
 </section>
 
 <script src="{% static 'js/map/script.js' %}"></script>
+
 <section class="full-screen-container-3">
     <div class="container-sanya">
         <div class="row">
             <div class="col-12">
-                <h1 class="star">Карта тута</h1>
+                <h1 class="star">Выбор места</h1>
             </div>
         </div>
         <div class="squareImg">
@@ -122,12 +123,6 @@
                 <img src="{% static 'img/map.jpg' %}" alt="Map" id="field">
             </div>
         </div>
-        <label for="text1">Координаты Лёхи:</label>
-        <textarea id="text1">Undefined</textarea>
-        <label for="text2">Координаты Льва:</label>
-        <textarea id="text2">Undefined</textarea>
-        <label for="text3">Координаты Валеры:</label>
-        <textarea id="text3">Undefined</textarea>
     </div>
 </section>
 
