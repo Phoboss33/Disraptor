@@ -289,6 +289,34 @@ img.captcha {
     margin-bottom: -0.1rem;
 }
 
+.vote-h3 {
+    font-family: "Rostov";
+    color: #216869;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.card-boxX {
+    background-color: #DCE1DE;
+}
+
+.vote-p {
+    font-family: "Rostov";
+    color: #1F2421;
+    font-size: 1.1rem;
+    margin: 0 auto;
+}
+
+.form-check {
+    display: inline-block;
+    vertical-align: middle;
+    flex-grow: 1;
+}
+
+.vote-h3, .vote-p {
+    margin: 0;
+}
+
 .star-p {
     font-family: "Frank";
     color: #555;
@@ -386,7 +414,8 @@ img.captcha {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.form-check-label {
+
+ck-label {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
@@ -397,6 +426,9 @@ img.captcha {
 
 .card-img-top {
     margin-top: -2px;
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
 }
 
 .form-check-label {
