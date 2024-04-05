@@ -1,6 +1,5 @@
 from django.contrib import admin
-from lending.models import Object, Respondent, ChangeLog, SelectedObject, Annotation, PhotoCarousel
-
+from lending.models import Object, Respondent, ChangeLog, SelectedObject, Annotation, PhotoCarousel, TextMainInfo
 
 class ObjectAdmin(admin.ModelAdmin):
     list_display = (
@@ -95,3 +94,5 @@ admin.site.register(ChangeLog, ChangeLogAdmin)
 admin.site.register(SelectedObject, SelectedObjectAdmin)
 admin.site.register(Annotation, AnnouncementAdmin)
 admin.site.register(PhotoCarousel, PhotoCarouselAdmin)
+admin.site.register(TextMainInfo)
+
