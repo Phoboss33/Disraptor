@@ -56,8 +56,10 @@ class ChangeLog(models.Model):
 
 class SelectedObject(models.Model):
     coordinate = models.JSONField(null=True, blank=True)
-    respondent_json = models.JSONField(null=True, blank=True)
-    object_json = models.JSONField(null=True, blank=True)
+    # respondent_json = models.JSONField(null=True, blank=True)
+    respondent = models.ForeignKey(Respondent, on_delete=models.CASCADE)
+    # object_json = models.JSONField(null=True, blank=True)
+    object = models.ForeignKey(Object, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"SelectedObject {self.id}"
@@ -74,5 +76,10 @@ class Annotation(models.Model):
 
 class PhotoCarousel(models.Model):
     photo = models.ImageField()
-    title = models.CharField(blank=True)
+    title = models.CharField(blank=True, default="Здесь должно быть фото")
+
+
+class TextMainInfo(models.Model):
+    title = models.CharField(max_length=50, default="Информация")
+    text = models.TextField(max_length=2000, default="Информация о нас")
 

@@ -1,6 +1,9 @@
 let selectedObjects = [];
 let price_sum = 0
 
+let max_price = 75000000
+
+
 document.getElementById('respondentForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -24,8 +27,10 @@ document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
             }
         }
 
+        //$(".form-check-input").click(function() {if (!this.checked) return false;})
+
         // Объявляем переменную для суммирования цен
-        let sum_price = 0;
+        price_sum = 0;
 
         // Перебираем только отмеченные чекбоксы и суммируем цены
         document.querySelectorAll('div.form-check').forEach(function(div) {
@@ -35,14 +40,36 @@ document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
             if (checkbox.checked) {
                 let price = parseFloat(priceInput.value);
                 if (!isNaN(price)) {
-                    sum_price += price;
+                    price_sum += price;
                     console.log(priceInput.value);
                 }
+            }
+            //если достигли лимита - блочим чекбоксы
+            if (price_sum == max_price) {
+                //alert("переполнен");
+                document.querySelectorAll('div.form-check').forEach(function(div) {
+                    let checkbox = div.querySelector('input[type="checkbox"]');
+                    let priceInput = div.querySelector('input.price');
+                    let price = parseFloat(priceInput.value);
+                    if (!checkbox.checked && price!=0)
+                        checkbox.disabled = true;
+                });
+            } else { //если меньше лимита - разблочим чекбоксы | если новый объект переполнит лимит - блочим
+                document.querySelectorAll('div.form-check').forEach(function(div) {
+                    let checkbox = div.querySelector('input[type="checkbox"]');
+                    let priceInput = div.querySelector('input.price');
+                    let price = parseFloat(priceInput.value);
+                    if (!checkbox.checked)
+                        checkbox.disabled = false;
+                    if (!checkbox.checked && price+price_sum > max_price)
+                        checkbox.disabled = true;
+                });
             }
         });
 
         console.log(selectedObjects);
-        console.log(sum_price);
+        console.log(price_sum);
+        document.getElementById('summa_input').innerText = price_sum;
     });
 });
 
