@@ -26,6 +26,9 @@ class Object(models.Model):
             formatted_price = round(self.price / 1000, 0)
             return f"Цена: {formatted_price:.0f} тыс."
 
+    def show_votes(self):
+        return f"Количество голосов: {self.number_of_votes}"
+
     def __str__(self):
         return f"{self.title} \n{self.description}"
 

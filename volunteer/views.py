@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from lending.forms import RespondentForm
-from lending.models import Respondent
+from lending.models import Respondent, Object
 from volunteer.forms import RespondentSearchForm, UserProfileEditForm
 
 
@@ -64,5 +64,15 @@ def volunteer_cabinet(request):
             # TODO: Изменить данные пользователя
 
         return render(request, 'volunteer/volunteer.html', {'form': UserProfileEditForm, 'user': request.user})
+
+    return redirect('login')
+
+def data_panel(request):
+    if request.user.is_authenticated and request.user.groups.all():
+        if request.POST:
+            print("TODO: Вывод данных")
+            # TODO: Изменить данные пользователя
+        objects = Object.objects.all()
+        return render(request, 'volunteer/show_data.html', {'user': request.user, 'objects': objects})
 
     return redirect('login')
