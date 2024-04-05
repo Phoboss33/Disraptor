@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 {% load static %}
 {% load bootstrap5 %}
-<html lang="en">
+<html lang="ru">
 <head>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    {% bootstrap_css %}
+
     {% bootstrap_javascript %}
 </head>
 <body>
-<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'lending' %}">
+          <img src="{% static 'img/LogoLogoOGOGO.png' %}" alt="Logo" class="brand-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" aria-current="page" href="{% url 'lending' %}">На главную</a>
+            <a class="nav-link" href="{% url 'volunteer_cabinet' %}">Для волонтёров</a>
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <a class="nav-link" href="{% url 'admin:index' %}">Панель администратора</a>
+                {% endif %}
+                {% if user.groups.all %}
+                    <a class="nav-link" href="{% url 'respondent_search' %}">Изменить данные</a>
+                    <a class="nav-link" href="{% url 'data_panel' %}">Статистика</a>
+                {% endif %}
+                {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
 
 {% block content %}
 
 {% endblock %}
-</div>
 </body>
 </html>

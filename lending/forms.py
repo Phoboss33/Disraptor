@@ -5,22 +5,64 @@ from django.utils import timezone
 from .models import Respondent, Object, SelectedObject, ChangeLog
 
 class RespondentForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=30)
-    surname = forms.CharField(max_length=30)
-    patronymic = forms.CharField(max_length=30, required=False)
-    birthdate = forms.DateField()
-    sex = forms.ChoiceField(choices=[('male', 'Мужской'), ('female', 'Женский')])
+    first_name = forms.CharField(max_length=30,
+            widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите ваше имя'
+        }),)
+    surname = forms.CharField(max_length=30,
+            widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите вашу фамилию'
+        }),)
+    patronymic = forms.CharField(max_length=30, required=False,
+            widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите ваше Отчество'
+        }),)
+    birthdate = forms.DateField(
+        widget=forms.DateInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите вашу дату рождения',
+            'type': 'date'
+        })
+    )
+    sex = forms.ChoiceField(
+        choices=[('male', 'Мужской'), ('female', 'Женский')],
+        widget=forms.Select(attrs={
+            'class': 'form-control'
+        })
+    )
 
     class Meta:
         model = Respondent
         fields = ['first_name', 'surname', 'patronymic', 'birthdate', 'sex', 'suggestions']
-        labels = {
-            'first_name': 'Имя',
-            'surname': 'Фамилия',
-            'patronymic': 'Отчество',
-            'birthdate': 'Дата рождения',
-            'sex': 'Пол',
-            'suggestions':'Что бы вы хотели предложить',
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите ваше имя'
+            }),
+            'surname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите вашу фамилию'
+            }),
+            'patronymic': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите ваше Отчество'
+            }),
+            'birthdate': forms.DateInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите вашу дату рождения',
+                'type': 'date'
+            }),
+            'sex': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'suggestions': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 6,
+                'placeholder': 'Введите ваши предложения или пожелания для проекта'
+            })
         }
 
     def clean_birthdate(self):

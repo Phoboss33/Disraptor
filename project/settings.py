@@ -149,8 +149,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGOUT_REDIRECT_URL = "homepage"
-LOGIN_REDIRECT_URL = "homepage"
+LOGOUT_REDIRECT_URL = "lending"
+LOGIN_REDIRECT_URL = "volunteer_cabinet"
 LOGIN_URL = 'login'
 
 
