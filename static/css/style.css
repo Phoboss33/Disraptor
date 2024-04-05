@@ -9,6 +9,14 @@ img.captcha {
     height: 4rem;
 }
 
+a {
+    color: #000000; /* Или любой другой цвет по умолчанию */
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #9CC5A1;
+    transition: color 0.3s ease;
+}
 @font-face {
   font-family: 'Rostov';
   src: url('../fonts/Rostov.ttf') format('truetype');
@@ -94,6 +102,37 @@ img.captcha {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+
+.full-screen-container-5 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../img/resp_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btn-find {
+    background-color: #49A078;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-find:hover {
+    background-color: #216869;
 }
 
 .carousel-item {
@@ -431,6 +470,12 @@ ck-label {
     object-fit: cover;
 }
 
+.card-img-top2 {
+    margin-top: -2px;
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+}
 .form-check-label {
     cursor: pointer;
     transition: all 0.3s ease-in-out;

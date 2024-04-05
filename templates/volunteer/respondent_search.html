@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
+        <section class="full-screen-container-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
               <div style="margin-top: 5rem" class="card mt-100">
                 <div class="card-header">
-                  <h2 class="text-center">Поиск голосовавшего</h2>
+                  <h2 class="text-center vote-h3">Поиск голосовавшего</h2>
                 </div>
                 <div class="card-body">
                     {% csrf_token %}
                     <form method="POST" class="post-form">
-                        <p>{{ form.first_name }}</p>
+                        <p >{{ form.first_name }}</p>
                         <p>{{ form.surname }}</p>
                         <p>{{ form.patronymic }}</p>
                         <p>{{ form.birthdate }}</p>
                         <p>{{ form.sex }}</p>
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Поиск</button>
+                        <button type="submit" class="btn btn-find">Поиск</button>
                     </form>
-                    <br><a href="{% url 'password_change' %}">Изменить пароль</a>
+                    <br><a class="vote-p" href="{% url 'password_change' %}">Изменить пароль</a>
                 </div>
               </div>
             </div>
         </div>
+        </section>
     {%  else %}
        <a href="{% url 'login' %}">login</a>
     {% endif %}
