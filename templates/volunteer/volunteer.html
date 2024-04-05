@@ -17,10 +17,11 @@
               <form method="post" class="mt-4">
                 {% csrf_token %}{% bootstrap_form form %}
                 <button type="submit" class="btn btn-primary btn-block mt-4">Сохранить</button>
+                <button type="button" class="btn btn-danger btn-block mt-4"
+                        onclick="location.href='{% url 'logout' %}';">Выйти</button>
               </form>
                 <br><a href="{% url 'password_change' %}">Изменить пароль</a>
             </div>
-
           </div>
         </div>
     </div>

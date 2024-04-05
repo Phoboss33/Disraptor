@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Панель волонтёра</h1><h2>{{ user.last_name }} {{ user.first_name }}</h2> <a href="{% url 'logout' %}">logout</a><hr>
     {% if user.is_authenticated %}
-        {% for respondent in respondents %}
-            <a href="{% url 'respondent_edit' respondent.pk %}">{{ respondent }}</a><br>
-        {% endfor %}
-
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <div style="margin-top: 5rem" class="card mt-100">
+                <div class="card-header">
+                  <h2 class="text-center">Поиск голосовавшего</h2>
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    {% for respondent in respondents %}
+                        <a href="{% url 'respondent_edit' respondent.pk %}">{{ respondent.surname }} {{ respondent.first_name }}
+                            {{ respondent.patronymic }} {{ respondent.birthdate }}</a><br>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+        </div>
     {% else %}
-       <a href="{% url 'login' %}">login</a> | <a href="{% url 'register' %}">register</a>
+       <a href="{% url 'login' %}">login</a>
     {% endif %}
 {% endblock %}
+
+

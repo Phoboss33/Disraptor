@@ -10,7 +10,7 @@ pip install -r requirements.txt
 docker compose -f docker/dev-db/postgres/docker-compose.yml up -d
 
 # docker postgres logs
-  docker compose -f docker/dev-db/postgres/docker-compose.yml logs
+docker compose -f docker/dev-db/postgres/docker-compose.yml logs
 # docker postgres stop
 docker compose -f docker/dev-db/postgres/docker-compose.yml stop
   
