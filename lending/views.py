@@ -3,7 +3,7 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Object, Annotation, SelectedObject
+from .models import Object, Annotation, SelectedObject, PhotoCarousel
 from .forms import RespondentForm
 
 from django.http import JsonResponse
@@ -38,7 +38,9 @@ def lending_view(request):
         form = RespondentForm()
         objects = Object.objects.all()
         annotations = Annotation.objects.all()
-    return render(request, 'lending/index.html', {'form': form, 'objects': objects, 'annotations': annotations})
+        carousel_items = PhotoCarousel.objects.all()
+    return render(request, 'lending/index.html', {'form': form, 'objects': objects, 'annotations': annotations,
+                                                  'carousel_items': carousel_items})
 
 
 def valera_view(request):
