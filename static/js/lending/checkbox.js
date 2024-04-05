@@ -1,5 +1,6 @@
 let selectedObjects = [];
 let price_sum = 0
+let max_price = 750000
 
 document.getElementById('respondentForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -24,6 +25,8 @@ document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
             }
         }
 
+        //$(".form-check-input").click(function() {if (!this.checked) return false;})
+
         // Объявляем переменную для суммирования цен
         let sum_price = 0;
 
@@ -38,6 +41,23 @@ document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
                     sum_price += price;
                     console.log(priceInput.value);
                 }
+            }
+
+            if (sum_price > max_price) {
+                //alert("переполнен");
+                document.querySelectorAll('div.form-check').forEach(function(div) {
+                    let checkbox = div.querySelector('input[type="checkbox"]');
+                    let priceInput = div.querySelector('input.price');
+                    let price = parseFloat(priceInput.value);
+                    if (!checkbox.checked && price!=0)
+                        checkbox.disabled = true;
+                });
+            } else {
+                document.querySelectorAll('div.form-check').forEach(function(div) {
+                    let checkbox = div.querySelector('input[type="checkbox"]');
+                    if (!checkbox.checked)
+                        checkbox.disabled = false;
+                });
             }
         });
 
