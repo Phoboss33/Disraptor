@@ -1,7 +1,14 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404, redirect
 
-# Create your views here.
+from django.shortcuts import render, get_object_or_404, redirect
+import matplotlib.pyplot as plt
+import matplotlib
+import seaborn as sns
+from datetime import datetime, date  # Импортируем date из datetime
+import io
+import urllib, base64
+from django.db.models import Count
+from django.http import HttpResponse
+
 from lending.forms import RespondentForm
 from lending.models import Respondent, Object
 from volunteer.forms import RespondentSearchForm, UserProfileEditForm
@@ -69,10 +76,54 @@ def volunteer_cabinet(request):
 
 def data_panel(request):
     if request.user.is_authenticated and request.user.groups.all():
-        if request.POST:
-            print("TODO: Вывод данных")
-            # TODO: Изменить данные пользователя
+        matplotlib.use('agg')
+
+        # Получение данных из модели
+        respondents = Respondent.objects.all()
+
+        if not respondents:
+            # Если данных нет, верните сообщение или выполните другие действия
+            return HttpResponse("No data available")
+
+        # Вычисление возраста каждого респондента
+        today = date.today()
+        ages = [(today - respondent.birthdate).days // 365 for respondent in respondents]
+
+        # Создание DataFrame для удобства анализа
+        import pandas as pd
+        data = {
+            'Age': ages,
+            'Sex': [respondent.sex for respondent in respondents]
+        }
+        df = pd.DataFrame(data)
+
+        # Проверка наличия данных перед построением графика
+        if df.empty:
+            return HttpResponse("No data available")
+
+        # Создание графика
+        plt.figure(figsize=(10, 6))
+        sns.histplot(data=df, x='Age', hue='Sex', multiple='stack')
+        plt.xlabel('Возраст')
+        plt.ylabel('Количество')
+        plt.title('Распределение голосовавших по возрасту и полу')
+        plt.tight_layout()
+
+        # Преобразование графика в изображение
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format='png')
+        buffer.seek(0)
+        image_png = buffer.getvalue()
+        buffer.close()
+
+        # Преобразование изображения в строку base64
+        graphic = base64.b64encode(image_png)
+        graphic = graphic.decode('utf-8')
+
+        plt.close()
+
         objects = Object.objects.all()
-        return render(request, 'volunteer/show_data.html', {'user': request.user, 'objects': objects})
+
+        return render(request, 'volunteer/show_data.html', {'user': request.user, 'objects': objects, 'graphic': graphic})
 
     return redirect('login')

@@ -1,6 +1,8 @@
 let selectedObjects = [];
 let price_sum = 0
-let max_price = 750000 //поменяй меня , если я не правильный
+
+let max_price = 75000000
+
 
 document.getElementById('respondentForm').addEventListener('submit', function(event) {
     event.preventDefault();
