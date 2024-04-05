@@ -1,10 +1,7 @@
 import os
 import django
 
-# Устанавливаем переменную окружения DJANGO_SETTINGS_MODULE для указания файла настроек Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
-
-# Загружаем настройки Django
 django.setup()
 
 
@@ -14,9 +11,9 @@ import random
 from lending.models import Respondent
 
 def generate_random_respondent():
-    """
-    Генерирует случайные данные для модели Respondent.
-    """
+
+    # Генерирует случайные данные
+
     first_names_male = ['John', 'Michael', 'William', 'James', 'David']
     first_names_female = ['Mary', 'Jennifer', 'Linda', 'Patricia', 'Elizabeth']
     surnames = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown']
@@ -27,7 +24,7 @@ def generate_random_respondent():
     first_name = random.choice(first_names_male + first_names_female)
     surname = random.choice(surnames)
     patronymic = random.choice(patronymics)
-    birthdate = timezone.now() - timedelta(days=random.randint(18*365, 80*365))  # Случайная дата рождения от 18 до 80 лет назад
+    birthdate = timezone.now() - timedelta(days=random.randint(18*365, 80*365))  # Случайная дата рождения
     sex = random.choice(sexes)
     suggestion = random.choice(suggestions)
     created_date = timezone.now()
@@ -44,12 +41,12 @@ def generate_random_respondent():
     return respondent
 
 def generate_random_data(num_entries):
-    """
-    Генерирует заданное количество случайных записей Respondent.
-    """
+
+    # Генерирует Respondent.
+
     for _ in range(num_entries):
         generate_random_respondent()
 
 if __name__ == "__main__":
-    num_entries = 100  # Количество записей для генерации
+    num_entries = 100  # Количество записей
     generate_random_data(num_entries)
