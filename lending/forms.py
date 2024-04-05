@@ -88,7 +88,7 @@ class RespondentForm(forms.ModelForm):
             }),
             'suggestions': forms.Textarea(attrs={
                 'class': 'form-control',
-                'rows': 5,  # Вы можете настроить количество строк в TextArea
+                'rows': 6,
                 'placeholder': 'Введите ваши предложения или пожелания для проекта'
             })
         }

@@ -15,8 +15,9 @@
             {% csrf_token %}
             <p>* - обязательные поля</p>
             <div class="d-grid gap-2"><button type="submit" class="btn btn-success">Отправить</button></div>
+            <div style="margin-top: 1rem;" class="d-grid gap-2"><button type="button" class="btn btn-outline-secondary"
+                                      onclick="location.href='{% url 'login' %}';" >Уже есть аккаунт?</button></div>
     </form>
-
     </div>
 </div>
 {% endblock %}

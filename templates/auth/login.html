@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
 <div class="col-md-6">
 <br>
-<div style="margin-top: 25px" class="text-center align-content-center">
+<div style="margin-top: 4rem" class="text-center align-content-center">
     <img src="{% static "img/Logo.jpeg" %}" width="30%" height="30%" alt="logo">
     <h2 class="text-center mb-4">Вход</h2>
 </div>
@@ -15,7 +15,9 @@
 <form action="{% url 'login' %}" method="post">
 {% bootstrap_form form %}
 {% csrf_token %}
-    <div class="d-grid gap-2"><button type="submit" class="btn btn-primary" >Войти</button></div>
+    <div class="d-grid gap-2"><button type="submit" class="btn btn-success" >Войти</button></div>
+    <div style="margin-top: 1rem;" class="d-grid gap-2"><button type="button" class="btn btn-outline-secondary"
+                                      onclick="location.href='{% url 'register' %}';">Регистрация</button></div>
 </form>
 </div>
 </div>

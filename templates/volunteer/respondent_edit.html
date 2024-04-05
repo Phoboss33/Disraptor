@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Панель волонтёра</h1><h2>{{ user.last_name }} {{ user.first_name }}</h2> <a href="{% url 'logout' %}">logout</a><hr>
     {% if user.is_authenticated %}
-        {{ form.as_p }}
-
-    {% else %}
-       <a href="{% url 'login' %}">login</a> | <a href="{% url 'register' %}">register</a>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <div style="margin-top: 5rem" class="card mt-100">
+                <div class="card-header">
+                  <h2 class="text-center">Изменение данных</h2>
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    <form method="POST" class="post-form">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Изменить</button>
+                        <button type="button" class="btn btn-primary"
+                                onclick="location.href='{% url 'respondent_search' %}';">Назад</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    {%  else %}
+       <a href="{% url 'login' %}">login</a>
     {% endif %}
 {% endblock %}
+

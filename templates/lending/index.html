@@ -17,33 +17,28 @@
                 <!-- Bootstrap Carousel with Custom Styles -->
                 <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-bs-ride="carousel">
                     <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
-                      <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                      </div>
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="Slide 1">
+                        <div class="carousel-indicators">
+                            {% for item in carousel_items %}
+                                <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                            {% endfor %}
                         </div>
-                        <div class="carousel-item">
-                          <img src="{% static 'img/bg-2.jpg' %}" class="d-block w-100" alt="Slide 2">
+                        <div class="carousel-inner">
+                            {% for item in carousel_items %}
+                                <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                                    <img src="{{ item.photo.url }}" class="d-block w-100" alt="Slide {{ forloop.counter }}">
+                                </div>
+                            {% endfor %}
                         </div>
-                        <div class="carousel-item">
-                          <img src="{% static 'img/bg-1.jpg' %}" class="d-block w-100" alt="Slide 3">
-                        </div>
-                      </div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </div> <!-- Закрывающий тег для внутреннего carousel-slide -->
-                </div> <!-- Закрывающий тег для внешнего carousel-slide -->
-                <!-- End Bootstrap Carousel -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -78,7 +73,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="star">Голосоуй за проекты</h1>
+                <h1 class="star">Голосуй за проекты</h1>
             </div>
         </div>
         <div class="row">
@@ -89,9 +84,11 @@
                         <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.title }}">
                         <div class="card-body">
                             <div class="form-check">
+                                <input class="price" type="hidden" value="{{ object.price }}">
                                 <input class="form-check-input" type="checkbox" value="" id="{{ object.id }}">
                                 <label class="form-check-label" for="checkbox{{ object.id }}">
-                                    {{ object.title }}
+                                    <p class="star-h3">{{ object.title }}</p>
+                                    <p class="star-p">{{ object.get_price }}</p>
                                 </label>
                             </div>
                         </div>
@@ -115,7 +112,6 @@
                 <img src="{% static 'img/map.jpg' %}" alt="Map">
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -184,7 +180,7 @@
                 </div>
             {% endfor %}
             <input type="hidden" name="selectedObjects" id="selectedObjectsField">
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-success">Отправить</button>
         </div>
     </section>
 </form>
