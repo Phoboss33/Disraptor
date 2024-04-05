@@ -76,5 +76,10 @@ class Annotation(models.Model):
 
 class PhotoCarousel(models.Model):
     photo = models.ImageField()
-    title = models.CharField(blank=True)
+    title = models.CharField(blank=True, default="Здесь должно быть фото")
+
+
+class TextMainInfo(models.Model):
+    title = models.CharField(max_length=50, default="Информация")
+    text = models.TextField(max_length=2000, default="Информация о нас")
 
