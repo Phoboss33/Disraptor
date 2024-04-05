@@ -4,6 +4,11 @@ html {
   /*scroll-behavior: smooth;*/
 }
 
+img.captcha {
+    width: 8rem;
+    height: 4rem;
+}
+
 @font-face {
   font-family: 'Rostov';
   src: url('../fonts/Rostov.ttf') format('truetype');
