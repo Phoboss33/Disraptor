@@ -78,6 +78,8 @@
         </div>
         <div class="row">
             {% csrf_token %}
+            <p>Сумма: (поменяйте мне дизайн)</p>
+            <p id="summa_input"></p>
             {% for object in objects %}
                 <div class="col-6 col-md-3 mb-4">
                     <div class="card h-100">
