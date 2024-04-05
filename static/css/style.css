@@ -328,9 +328,23 @@ a:hover {
     margin-bottom: -0.1rem;
 }
 
+.custom-background-color {
+    background-color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+    margin-left: 0.05rem;
+    margin-bottom: 2rem;
+}
+
 .vote-h3 {
     font-family: "Rostov";
     color: #216869;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+.sum-h3 {
+    font-family: "Rostov";
+    color: #dce1de;
     font-size: 1.5rem;
     padding-bottom: 1rem;
 }

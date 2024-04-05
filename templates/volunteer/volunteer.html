@@ -3,6 +3,7 @@
 
 {% block content %}
 
+    <section class="full-screen-container-5">
     <div class="row">
         <div class="col-md-6 offset-md-3">
           <div style="margin-top: 5rem" class="card mt-100">
@@ -20,10 +21,10 @@
                 <button type="button" class="btn btn-danger btn-block mt-4"
                         onclick="location.href='{% url 'logout' %}';">Выйти</button>
               </form>
-                <br><a href="{% url 'password_change' %}">Изменить пароль</a>
             </div>
           </div>
         </div>
     </div>
+    </section>
 
 {% endblock %}
