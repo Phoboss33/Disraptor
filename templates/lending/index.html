@@ -98,7 +98,7 @@
     </div>
 </section>
 
-
+<script src="static/js/map/script.js"></script>
 <section class="full-screen-container-3">
     <div class="container">
         <div class="row">
@@ -106,11 +106,22 @@
                 <h1 class="star">Карта тута</h1>
             </div>
         </div>
+        <div class="squareImg">
+            <div class="square" id="square1"></div>
+            <div class="square" id="square2"></div>
+            <div class="square" id="square3"></div>
+        </div>
         <div class="row">
             <div class="col-6 col-md-3 mb-4">
-                <img src="{% static 'img/map.jpg' %}" alt="Map">
+                <img src="{% static 'img/map.jpg' %}" alt="Map" id="field">
             </div>
         </div>
+        <label for="text1">Координаты Лёхи:</label>
+        <textarea id="text1">Undefined</textarea>
+        <label for="text2">Координаты Льва:</label>
+        <textarea id="text2">Undefined</textarea>
+        <label for="text3">Координаты Валеры:</label>
+        <textarea id="text3">Undefined</textarea>
     </div>
 </section>
 
